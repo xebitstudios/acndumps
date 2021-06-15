@@ -1,0 +1,17 @@
+version: "3"
+services:
+  user:
+    image: jboss/wildfly
+    ports:
+      - 8080:8080
+      - 8000:8000
+      - 9990:9990
+    volumes:
+      - ./User/target/:/opt/jboss/wildfly/standalone/deployments/
+    container_name: "user"
+    restart: always
+    command: >
+         bash -c "cd target 
+         && cp java-hello-world.war /opt/jboss/wildfly/standalone/deployments/
+         && /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
+         && /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0"

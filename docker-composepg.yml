@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+    bitnami_postgres:
+        image: 'bitnami/postgresql:latest'
+        ports:
+            - 5432:5432
+        restart: always
+        environment:
+            POSTGRESQL_PASSWORD: "654321"
+        networks:
+            - app-tier
+        volumes:
+            - ./volume:/bitnami/postgresql
+    pgadmin4:
+        image: 'dpage/pgadmin4:latest'
+        restart: always
+        ports:
+            - 8080:80
+        depends_on:
+            - bitnami_postgres
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "connygy@gmail.com"
+            PGADMIN_DEFAULT_PASSWORD: "123456"
+        networks:
+            - app-tier
+    
+networks:
+    app-tier:
+        driver: bridge
+

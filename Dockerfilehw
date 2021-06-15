@@ -1,0 +1,19 @@
+FROM jboss/wildfly
+
+# Deploy war file for Application
+ADD target/java-hello-world.war /opt/jboss/wildfly/standalone/deployments/
+
+##  Change file WAR ownership to jboss:jboss
+USER root
+RUN chown jboss:jboss /opt/jboss/wildfly/standalone/deployments/java-hello-world.war
+##  back to jboss user for subsequent commands
+USER jboss
+
+# Create a log directory to store log files
+RUN mkdir /opt/jboss/wildfly/standalone/log
+
+# Explicitly expose port 8080
+EXPOSE 8080 9990
+
+RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
