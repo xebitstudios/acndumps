@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://192.168.99.100:15432/demo1"
+    username: postgres
+    password: password
+  jpa:
+    open-in-view: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
