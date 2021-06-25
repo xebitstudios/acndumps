@@ -1,0 +1,8 @@
+1. ./jboss-cli.sh
+
+2. module add --name=org.postgres --resources=C:\Users\Elite8300\Documents\PostgresSQLDrivers\postgresql-42.2.20.jar --dependencies=javax.api,javax.transaction.api
+
+3. /subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)
+
+4. data-source add --jndi-name=java:/PostGresDS --name=PostgresDS --connection-url=jdbc:postgresql://192.168.99.100:5432/postgres --driver-name=postgres --user-name=root --password=root
+
