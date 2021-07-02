@@ -1,0 +1,28 @@
+{
+  "app": {
+  	"name": "orders",
+  	"version": "0.0.1",
+  	"default_route": "list",
+  	"boutes": [
+    	{
+    		"endpoint": "create"
+    	},
+    	{
+    		"endpoint": "list"
+    	}
+  	],
+  	"routes": [
+    	"create",
+    	"list"
+  	]
+  },
+  "quotes":{
+    "SOMETHING":10,
+    "SOMETHING_ELSE":120.4
+  },
+  "graph": " My Favourite Data FLow ",
+  "node": " My Favourite Data Flow .Token My Node",
+  "timestamp": "2020-11-16T01:03:23.811Z",
+  "duration": 900269,
+  "outputRecordCounts": "output:1"
+}
