@@ -1,6 +1,6 @@
 {
   "app": {
-  	"name": "consumer",
+  	"name": "inventory",
   	"version": "0.0.1",
     "port": 4201,
   	"default_route": "create",
@@ -9,12 +9,45 @@
         "route": "create",
         "apis": [
           "consumer.create"
+        ],
+        "fragments": [
+          {
+            "type": "form",
+            "name": "Consumers",
+            "api": "consumer.create",
+            "fields": [
+              {
+                "name": "Name",
+                "type": "text",
+                "api_field": "name"
+              },
+              {
+                "name": "Age",
+                "type": "text",
+                "api_field": "age"
+              }
+            ]
+          }              
         ]
       },
       {
         "route": "list",
         "apis": [
           "consumer.findall"
+        ],
+        "fragments": [
+          {
+            "table": [
+              {
+                "rws": 10,
+                "tableHeaders": [
+                  "Name",
+                  "Age"
+                ],
+                "api": "consumer.findall"
+              }
+            ]
+          }              
         ]
       }
   	],
@@ -53,4 +86,4 @@
       }      
     ]
   }
-}
+} 
