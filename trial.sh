@@ -175,3 +175,4 @@ npm install
 
 echo - Starting $appname app...
 ng serve --port $appport
+ 
